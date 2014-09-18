@@ -157,7 +157,7 @@ describe LogStasher::RequestLogSubscriber do
       allow(request).to receive_messages(:params => event.payload[:params])
       LogStasher.add_default_fields_to_payload(event.payload, request)
       subscriber.process_action(event)
-      expect(log_output.json['@fields']['ip']).to eq '10.0.0.1'
+      expect(log_output.json['@fields']['ip']).to eq '10.0.0.000'
       expect(log_output.json['@fields']['route']).to eq'home#index'
       expect(log_output.json['@fields']['parameters']).to eq 'foo' => 'bar'
     end

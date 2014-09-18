@@ -53,7 +53,7 @@ describe LogStasher do
       LogStasher.log_controller_parameters = true
       LogStasher.custom_fields = []
       LogStasher.add_default_fields_to_payload(payload, request)
-      expect(payload[:ip]).to eq '10.0.0.1'
+      expect(payload[:ip]).to eq '10.0.0.000'
       expect(payload[:route]).to eq 'test#action'
       expect(payload[:parameters]).to eq 'a' => '1', 'b' => 2
       expect(LogStasher.custom_fields).to eq [:ip, :route, :request_id, :parameters]

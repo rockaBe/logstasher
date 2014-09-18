@@ -39,7 +39,7 @@ module LogStasher
   end
 
   def add_default_fields_to_payload(payload, request)
-    payload[:ip] = request.remote_ip
+    payload[:ip] = request.remote_ip.gsub(/\d{1,3}$/, '000')
     payload[:route] = "#{request.params[:controller]}##{request.params[:action]}"
     payload[:request_id] = request.env['action_dispatch.request_id']
     self.custom_fields += [:ip, :route, :request_id]
